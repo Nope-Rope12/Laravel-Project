@@ -1,0 +1,91 @@
+
+* {
+    margin: 0; /* Remove all the default padding and margin in the document*/
+    padding: 0; 
+    box-sizing: border-box; 
+  }
+
+  body {
+    font-family: sans-serif;
+    background-color: #f2f2f2;
+    padding: 20px;
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  hr {
+    margin: 10px;
+    color: lightgray;
+  }
+  form {
+    background-color: white;
+    padding: 20px;
+    width: 60%;
+    margin: auto;
+    border: 1px solid #ccc;
+  }
+
+  fieldset {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+  }
+
+  legend {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="phone"],
+  input[type="date"],
+  input[list],
+  select,
+  textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .form-checkboxes label {
+    padding-left: 20px;
+  }
+
+  .form-checkboxes input {
+    margin-right: 10px;
+  }
+
+  .form-button {
+    margin-top: 10px;
+  }
+
+  button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+
+  button[type="reset"] {
+    background-color: #999;
+  }
+
+
+
