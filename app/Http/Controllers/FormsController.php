@@ -12,7 +12,9 @@ class FormsController extends Controller
      */
     public function index()
     {
-        //
+        $contacts=ContactUs::all();
+        return view('index',compact('contacts'));
+        //compact to share data from backend to frontens
     }
 
     /**
@@ -47,7 +49,7 @@ class FormsController extends Controller
 
         $contact->save();
 
-        return redirect()->route('sucess');
+        return redirect()->route('form.index');
     }
 
     /**
