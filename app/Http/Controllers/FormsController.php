@@ -63,9 +63,10 @@ class FormsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $contactus=ContactUs::find($id);
+        return view('edit',compact('contactus'));
     }
 
     /**
@@ -73,7 +74,26 @@ class FormsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            "username"=>"required | min:5 | max:20",
+            "gender"=>"required | in:male,female",
+            "message"=>"nullable",
+            "class"=>"required | max:10",
+            "email"=>"required | email | max:20",
+        ]);
+        //dump and dive 
+        //dd($request->all())
+
+        $contact = ContactUs::find($id);
+        $contact->username=$request->username;
+        $contact->gender=$request->gender;
+        $contact->class=$request->class;
+        $contact->email=$request->email;
+        $contact->message=$request->message;
+
+        $contact->save();
+
+        return redirect()->route('form.index');
     }
 
     /**
@@ -81,6 +101,8 @@ class FormsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $contactus=ContactUs::find($id);
+        $contactus->delete();
+        return redirect()->route('form.index');
     }
 }

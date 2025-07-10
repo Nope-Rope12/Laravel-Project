@@ -8,8 +8,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
-
-
   <div>
     <form action="{{route("form.store")}}" method="post" id="form">
     @csrf
