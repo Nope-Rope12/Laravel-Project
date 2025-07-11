@@ -9,14 +9,14 @@
 </head>
 <body>
   <div>
-    <form action="{{route("form.store")}}" method="post" id="form">
+    <form action="{{route("form.update",$contactus->id)}}" method="post" id="form">
     @csrf
       <fieldset>
         <legend>Personal Information</legend>
 
         <div class="form-input">
           <label for="Username">Name:</label>
-          <input type="text" id="Username" name="username" value="{{old('username')}}">
+          <input type="text" id="Username" name="username" value="{{$contactus->username}}">
         @error('username')
           <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
         @enderror
@@ -24,7 +24,7 @@
 
         <div class="form-input">
           <label for="email">email:</label>
-          <input type="email" id="email" name="email" value="{{old('email')}}">
+          <input type="email" id="email" name="email" value="{{$contactus->email}}">
           @error('email')
           <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
           @enderror
@@ -34,12 +34,12 @@
 
         <div class="form-select">
           <label for="Gender">Choose a Gender:</label>
-          <select id="Gender" name="class">
+          <select id="Gender" name="gender">
             <option value="">--Select--</option>
-            <option value="{{old('class'),male}}">Male</option>
-            <option value="{{old('class'),female}}">Female</option>
+            <option value="male" {{$contactus->gender=="male"?"selected":""}}>Male</option>
+            <option value="female" {{$contactus->gender=="female"?"selected":""}}>Female</option>
           </select>
-          @error('class')
+          @error('gender')
           <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
         @enderror
         </div>
@@ -48,7 +48,7 @@
 
         <div class="form-textarea">
           <label for="message">Brief Description:</label>
-          <textarea id="message" name="message" rows="5" cols="40" placeholder="Write a brief description...">{{old('message')}}</textarea>
+          <textarea id="message" name="message" rows="5" cols="40" placeholder="Write a brief description..."> {{$contactus->message}}</textarea>
           @error('message')
           <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
           @enderror
@@ -56,21 +56,24 @@
 
         <hr>
 
-        <div class="form-datalist">
-          <label for="class">Select Class:</label>
-          <input list="Class" name="class" id="class">
-          <datalist id="Class">
-            <option value="Class X" value="{{old('class'),Class X}}">
-            <option value="Class XI" value="{{old('class'),Class XI}}">
-            <option value="Class XII" value="{{old('class'),Class XII}}">
-          </datalist>
-          @error('class')
-          <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-          @enderror
+       <div class="form-datalist">
+            <label for="class">Select Class:</label>
+            <input list="Class" name="class" id="class" value="{{ old('class', $contactus->class ?? '') }}">
+            
+            <datalist id="Class">
+                <option value="Class X">
+                <option value="Class XI">
+                <option value="Class XII">
+            </datalist>
+
+            @error('class')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
         </div>
 
+
       <div class="form-button">
-      <button type="submit">Submit</button>
+      <button type="submit">Update</button>
       </div>
 
     </form>

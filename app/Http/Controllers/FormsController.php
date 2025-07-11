@@ -37,6 +37,7 @@ class FormsController extends Controller
             "class"=>"required | max:10",
             "email"=>"required | email | max:20",
         ]);
+        
         //dump and dive 
         //dd($request->all())
 
